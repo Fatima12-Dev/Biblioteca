@@ -72,8 +72,9 @@ public class LibroController {
     // DELETE /api/v1/libros/{id} -> 204 No Content
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void eliminar(@PathVariable Long id) {
+    public ResponseEntity<String> eliminar(@PathVariable Long id) {
         libroService.eliminar(id);
+        return ResponseEntity.ok("El libro con el ID " + id + " se eliminó correctamente.");
     }
 
     private LibroResponseDTO convertirADto(Libro libro) {
